@@ -13,10 +13,12 @@
 	});
 
 	const setMinMax = () => {
-		$min = Math.random() * 100;
-		$max = Math.random() * 100 + $min;
-		$value = [Math.random() * 10000];
+		console.error('set invalid min & max');
+		$min = 200;
+		$max = 400;
 	};
+
+	$: console.log({ $min, $max, $value });
 </script>
 
 <span use:melt={$root} class="relative flex h-[20px] w-[200px] items-center">
@@ -30,4 +32,4 @@
 	/>
 </span>
 
-<button on:click={setMinMax}>set min & max & value</button>
+<button on:click={setMinMax}>set invalid min & max</button>

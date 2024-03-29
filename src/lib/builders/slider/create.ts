@@ -526,6 +526,14 @@ export const createSlider = (props?: CreateSliderProps) => {
 		}
 	);
 
+	effect([min, max], function fixMinMax([$min, $max]) {
+		if ($min >= $max) {
+			let temp = $max;
+			max.set($min);
+			min.set(temp);
+		}
+	});
+
 	effect([step, min, max, value], function fixValue([$step, $min, $max, $value]) {
 		const isValidValue = (v: number) => {
 			const snappedValue = snapValueToStep(v, $min, $max, $step);
